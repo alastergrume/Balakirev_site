@@ -1,0 +1,41 @@
+https://timeweb.cloud/tutorials/django/kak-ustanovit-django-nginx-i-gunicorn-na-virtualnyj-server
+https://alexlinus.ru/blog/deploy-django-proekta-na-vps/?ysclid=m2t8zttv5h80178401
+
+$ sudo nano /etc/systemd/system/gunicorn.socket
+
+[Unit]
+Description=gunicorn socket
+[Socket]
+ListenStream=/run/gunicorn.sock
+[Install]
+WantedBy=sockets.target
+
+$ sudo nano /etc/systemd/system/gunicorn.service
+
+[Unit]
+Description=gunicorn daemon
+Requires=gunicorn.socket
+After=network.target
+[Service]
+User=ivan
+Group=www-data
+WorkingDirectory=/home/ivan/Balakirev_site/sitewomen/ # Тут путь до папки приложения, где manage.py
+ExecStart=/home/ivan/Balakirev_site/my_env/bin/gunicorn \  # Тут путь до папки виртуальношго окружения, где лежит gunicorn
+          --access-logfile - \
+          --workers 3 \
+          --bind unix:/run/gunicorn.sock \
+          sitewomen.wsgi:application   # Тут только название приложения
+[Install]
+WantedBy=multi-user.target
+
+
+
+
+Перезапук демона gunicorn после изменения gunicorn.service
+
+https://stackoverflow.com/questions/60253711/active-failed-result-service-start-limit-hit
+$ sudo systemctl daemon-reload
+
+$ sudo systemctl restart gunicorn
+
+$ sudo systemctl status gunicorn.service

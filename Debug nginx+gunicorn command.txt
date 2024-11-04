@@ -1,0 +1,20 @@
+логи
+sudo cat /var/log/nginx/error.log
+
+файл конфигурациии
+sudo nano /etc/nginx/sites-available/Balakirev_site
+
+статус
+sudo systemctl restart nginx
+
+статус
+sudo systemctl status gunicorn
+журнал
+sudo journalctl -u gunicorn.socket
+
+sudo nano /etc/systemd/system/gunicorn.socket
+sudo nano /etc/systemd/system/gunicorn.service
+
+sudo systemctl daemon-reload
+sudo systemctl restart gunicorn.socket
+

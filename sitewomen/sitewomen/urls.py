@@ -28,5 +28,5 @@ urlpatterns = [
 # Обработка исключения PageNotFoundError. При вводе не существующего URL обрабатывается функция представления
 # women.views.page_not_found. Переменная зарезервированная в Django. Если неправильно написать, работать не будет
 
-
-handler404 = page_not_found
+# Для отображения не найденной страницы в режиме Debug = False
+# handler404 = page_not_found
