@@ -13,9 +13,9 @@ menu = [
 ]
 
 data_db = [
-    {'id': 1, 'title': 'Анджелина Джоли', 'content': 'Биография Анджелины Джоли', 'id_published': True},
-    {'id': 2, 'title': 'Марго Робби', 'content': 'Биография Марго Робби', 'id_published': False},
-    {'id': 3, 'title': 'Джулия Робертс', 'content': 'Биография Джулии Робертс', 'id_published': True},
+    {'id': 1, 'title': 'Анджелина Джоли', 'content': 'Биография Анджелины Джоли', 'is_published': True},
+    {'id': 2, 'title': 'Марго Робби', 'content': 'Биография Марго Робби', 'is_published': False},
+    {'id': 3, 'title': 'Джулия Робертс', 'content': 'Биография Джулии Робертс', 'is_published': True},
 ]
 
 
@@ -24,7 +24,7 @@ def index(request):
             'menu': menu,
             'posts': data_db,
             }
-    return render(request, "women/index.html", data)
+    return render(request, "women/index.html", context=data)
 
 
 def about(request):

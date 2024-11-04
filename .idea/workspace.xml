@@ -8,7 +8,7 @@
       <change afterPath="$PROJECT_DIR$/sitewomen/templates/base.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/sitewomen/women/converters.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/sitewomen/women/modules/my_func.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sitewomen/women/static/women/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sitewomen/women/static/women/css/styles.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/sitewomen/women/templates/women/about.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/sitewomen/women/templates/women/includes/nav.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/sitewomen/women/templates/women/index.html" afterDir="false" />
@@ -16,7 +16,6 @@
       <change afterPath="$PROJECT_DIR$/sitewomen/women/templates/women/page_mot_found.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/sitewomen/women/templates/women/run_deficit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sitewomen/sitewomen/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/sitewomen/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sitewomen/sitewomen/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/sitewomen/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sitewomen/women/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/women/urls.py" afterDir="false" />
