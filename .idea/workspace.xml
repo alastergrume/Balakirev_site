@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="96067450-b0c7-49aa-99b8-cf3cedf66093" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/sitewomen/templates/base.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/sitewomen/women/converters.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/sitewomen/women/modules/my_func.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sitewomen/women/static/women/css/style.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/sitewomen/women/templates/women/about.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sitewomen/women/templates/women/includes/nav.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/sitewomen/women/templates/women/index.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/sitewomen/women/templates/women/main.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/sitewomen/women/templates/women/page_mot_found.html" afterDir="false" />
@@ -33,7 +36,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/sitewomen" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />

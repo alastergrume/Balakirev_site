@@ -1,22 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{title}}</title>
-</head>
-<body>
-<ul>
-    <li><a href="{% url 'home' %}">Главная страница</a></li>
-    {% for item in menu %}
+{% extends 'base.html' %}
 
-    {% if not forloop.last %}<li>{% else %} <li  class="last">{% endif %}
-
-        <a href="{% url item.url_name %}">{{item.title}}</a>
-    </li>
-    {% endfor %}
-</ul>
+{% block content %}
 
 <h1>{{ title }}</h1>
+
+{% include 'women/includes/nav.html' %}
+
      <ul>
          {% for p in posts %}
          {% if p.id_published == True %}
@@ -31,5 +20,7 @@
          {% endif %}
          {% endfor %}
      </ul>
-</body>
-</html>
+
+
+{% endblock %}
+

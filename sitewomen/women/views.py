@@ -28,7 +28,7 @@ def index(request):
 
 
 def about(request):
-    return render(request, "women/about.html", {'title': "О сайте"})
+    return render(request, "women/about.html", {'title': "О сайте", 'menu': menu})
 
 
 def show_post(request, post_id):
@@ -59,4 +59,4 @@ def run_deficit(request):
     numb1 = [1, 2, 3]
     if request.method == 'GET':
         context = calc_numbers(numb1)
-        return render(request, 'women/run_deficit.html', {'context': context})
+        return render(request, 'women/run_deficit.html', {'context': context, 'menu': menu})

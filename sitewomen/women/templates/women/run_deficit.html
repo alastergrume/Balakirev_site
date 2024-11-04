@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
 
     <h1> Произошло формирование дефицита </h1>
 
-    {% block content %}
     {% for cont in context %}
 
     <table>
@@ -20,7 +15,6 @@
                 </tr>
     </table>
     {% endfor %}
-    {% endblock content %}
 
-</body>
-</html>
+
+{% endblock %}
