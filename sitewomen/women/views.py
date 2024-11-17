@@ -1,14 +1,14 @@
 from django.http import HttpResponseNotFound, Http404
 from django.shortcuts import render, HttpResponse, redirect
-from women.modules.my_func import calc_numbers
+
 from django.template.loader import render_to_string
 from django.template.defaultfilters import slugify
 
 menu = [
     {'title': 'О сайте', 'url_name': 'about'},
     {'title': 'Добавить статью', 'url_name': 'add_page'},
-    {'title': 'Сделать дефицит', 'url_name': 'run_deficit'},
     {'title': 'Обратная связь', 'url_name': 'contact'},
+    {'title': 'Дефицит', 'url_name': 'deficit'},  # Переход к приложению purch_manager
     {'title': 'Войти', 'url_name': 'login'},
 ]
 
@@ -27,7 +27,19 @@ def index(request):
     return render(request, "women/index.html", context=data)
 
 
+# def handle_uploaded_file(f):
+#     # Функция для загрузки файла с оф. док. https://docs.djangoproject.com/en/5.1/topics/http/file-uploads/
+#     with open("women/media/women/daily_deficit.xlsx", "wb+") as destination:
+#         for chunk in f.chunks():
+#             destination.write(chunk)
+
+
 def about(request):
+    # При отправке файла в форме, в Request создается атрибут FILE
+    # И к нему потом можно обратиться для сохранения файла
+    # Можно использовать функции, которые определены документацией
+    # https://docs.djangoproject.com/en/5.1/topics/http/file-uploads/
+
     return render(request, "women/about.html", {'title': "О сайте", 'menu': menu})
 
 
@@ -53,10 +65,3 @@ def page_not_found(request, exception):
     :return: Страницу с надписью "Страница не найдена"
     """
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
-
-
-def run_deficit(request):
-    numb1 = [1, 2, 3]
-    if request.method == 'GET':
-        context = calc_numbers(numb1)
-        return render(request, 'women/run_deficit.html', {'context': context, 'menu': menu})

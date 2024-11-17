@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1> Дефицит на сегодня </h1>
+    <div class="deficit">
+
+
+    <table class="table_of_deficit" border="collapse" width="100%">
+        {% for cont in context %}
+        <tr>
+            <td class="one">{{cont.Номенклатура}}</td>
+            <td class="one">{{cont.Код}}</td>
+            <td class="col-vo">{{cont.ЕИ}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{title}}</h1>
+<!--Для загрузки файла на сервер-->
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+<!--    <p> <input type="file" name="file_upload"> </p>-->
+    <p> <button type="submit">Отправить</button></p>
+
+</form>
+    <p> <button type="submit"><a href="{% url 'run_deficit' %}">Сформировать дефицит</button>
+
+
+
+{% endblock %}

@@ -1,0 +1,5 @@
+razuzlovka_file_path = 'E:/PycharmProjects/Balakirev_site/sitewomen/media/uploads_deficit_files/raz.xlsx'
+deficit_file = 'E:/PycharmProjects/Balakirev_site/sitewomen/media/uploads_deficit_files/deficit.xlsx'
+internal_file = 'resources/internal_order/1291.xlsx'
+internal_order_dir = 'resources/internal_order/'
+prices_path = 'E:/PycharmProjects/Balakirev_site/sitewomen/media/uploads_deficit_files/pr.xlsx'

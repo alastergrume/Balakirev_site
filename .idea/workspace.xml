@@ -5,8 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="96067450-b0c7-49aa-99b8-cf3cedf66093" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/sitewomen/purch_manager/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sitewomen/purch_manager/modules/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sitewomen/purch_manager/modules/_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sitewomen/purch_manager/modules/config/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sitewomen/purch_manager/modules/config/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sitewomen/purch_manager/modules/my_func.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sitewomen/purch_manager/static/women/css/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sitewomen/purch_manager/static/women/images/blockquote.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sitewomen/purch_manager/static/women/images/btn_yt.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sitewomen/purch_manager/static/women/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sitewomen/purch_manager/static/women/images/main.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sitewomen/purch_manager/static/women/images/share_yt.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sitewomen/purch_manager/static/women/images/smallmenu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sitewomen/purch_manager/templates/purch_manager/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sitewomen/purch_manager/templates/purch_manager/page_not_found.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sitewomen/purch_manager/templates/purch_manager/run_deficit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sitewomen/purch_manager/templates/purch_manager/upload_deficit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sitewomen/purch_manager/urls.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/sitewomen/templates/base.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/sitewomen/women/converters.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sitewomen/women/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sitewomen/women/modules/config/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sitewomen/women/modules/data.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/sitewomen/women/modules/my_func.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/sitewomen/women/static/women/css/styles.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/sitewomen/women/templates/women/about.html" afterDir="false" />
@@ -14,10 +35,12 @@
       <change afterPath="$PROJECT_DIR$/sitewomen/women/templates/women/index.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/sitewomen/women/templates/women/main.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/sitewomen/women/templates/women/page_mot_found.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sitewomen/women/templates/women/run_deficit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sitewomen/sitewomen/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/sitewomen/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sitewomen/sitewomen/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/sitewomen/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/women/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sitewomen/women/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/women/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sitewomen/women/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/women/views.py" afterDir="false" />
     </list>
@@ -29,13 +52,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/sitewomen" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -58,11 +81,19 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "ignore_missing_gitignore": "true",
-    "last_opened_file_path": "E:/PycharmProjects/Balakirev_site/sitewomen/manage.py"
+    "last_opened_file_path": "E:/PycharmProjects/Balakirev_site/sitewomen/purch_manager",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\PycharmProjects\Balakirev_site\sitewomen\purch_manager" />
+      <recent name="E:\PycharmProjects\Balakirev_site\sitewomen\purch_manager\templates\purch_manager" />
+      <recent name="E:\PycharmProjects\Balakirev_site\sitewomen\women\modules" />
+      <recent name="E:\PycharmProjects\Balakirev_site\sitewomen\women" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\PycharmProjects\Balakirev_site\sitewomen\women\modules" />
       <recent name="E:\PycharmProjects\Balakirev_site\sitewomen\women\templates\women" />
       <recent name="E:\PycharmProjects\Balakirev_site\sitewomen\women\templates" />
     </key>

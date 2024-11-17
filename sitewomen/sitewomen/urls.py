@@ -16,17 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
 from women.views import page_not_found
+from . import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('women.urls')), # Направляемся на URLS  в приложении women
+    path('', include('women.urls')),  # Направляемся на URLS  в приложении women
+    path('', include('purch_manager.urls')),  # Направляемся на URLS в приложении purch_manager
 ]
 
-
 # Обработка исключения PageNotFoundError. При вводе не существующего URL обрабатывается функция представления
-# women.views.page_not_found. Переменная зарезервированная в Django. Если неправильно написать, работать не будет
+# women.views.page_not_found. #Переменная зарезервированная в Django. Если неправильно написать, работать не будет
 
 # Для отображения не найденной страницы в режиме Debug = False
-# handler404 = page_not_found
+if not settings.DEBUG:
+    handler404 = page_not_found
