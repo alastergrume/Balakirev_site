@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!--Заголовок статьи-->
+<h1>{{post.title}}</h1>
+
+<!--Отображение изображения, если оно есть-->
+{% if post.photo %}
+<p><img class="img-article-left" src="{{post.photo.url}}"></p>
+{% endif %}
+
+<!--Отображение содержимого статьи, и добавляем фильтр для переноса строк -->
+{{post.content|linebreaks}}
+{% endblock %}

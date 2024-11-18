@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseNotFound, Http404
 from django.shortcuts import render, HttpResponse, redirect
-from women.modules.my_func import input_deficit
+from .modules.my_func import input_deficit
 from .forms import UploadFilesForm
 
 from django.template.loader import render_to_string

@@ -2,8 +2,8 @@ import os
 import time
 import numpy as np
 import pandas as pd
-from _data import deficit_file, internal_file, razuzlovka_file_path, internal_order_dir, prices_path
-from config.config import custom_deficit, new_collumns
+# from _data import deficit_file, internal_file, razuzlovka_file_path, internal_order_dir, prices_path
+# from config.config import custom_deficit, new_collumns
 # from database.database import DataBase
 from datetime import date
 
