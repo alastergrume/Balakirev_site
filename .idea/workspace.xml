@@ -7,6 +7,7 @@
     <list default="true" id="96067450-b0c7-49aa-99b8-cf3cedf66093" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/sitewomen/women/templates/women/list_tags.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sitewomen/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sitewomen/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sitewomen/women/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/women/models.py" afterDir="false" />
@@ -42,7 +43,7 @@
         </map>
       </branch-storage>
     </excluded-from-favorite>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/sitewomen" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="SYNC" />
   </component>
   <component name="MarkdownSettingsMigration">
