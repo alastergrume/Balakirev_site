@@ -5,11 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="96067450-b0c7-49aa-99b8-cf3cedf66093" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/sitewomen/static/css/admin/admin.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sitewomen/templates/admin/base_site.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/sitewomen/women/templates/women/list_tags.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sitewomen/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/purch_manager/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/purch_manager/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/purch_manager/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/purch_manager/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/purch_manager/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/purch_manager/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/sitewomen/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/sitewomen/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/sitewomen/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/sitewomen/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sitewomen/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/women/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/women/apps.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sitewomen/women/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/women/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sitewomen/women/templates/women/post.html" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/women/templates/women/post.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sitewomen/women/templatetags/women_tags.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/women/templatetags/women_tags.py" afterDir="false" />
@@ -43,7 +52,7 @@
         </map>
       </branch-storage>
     </excluded-from-favorite>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/sitewomen" />
     <option name="ROOT_SYNC" value="SYNC" />
   </component>
   <component name="MarkdownSettingsMigration">

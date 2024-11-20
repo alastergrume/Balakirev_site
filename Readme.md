@@ -1093,3 +1093,183 @@ order_by()
 Создание связей в базе данных
 -----------------------------------------------------------------------
 
+
+-----------------------------------------------------------------------
+Подключение admin панели        
+-----------------------------------------------------------------------
+
+В settings.py меняем язык на русский
+
+    LANGUAGE_CODE = 'ru-RU'
+
+Создаем суперпользователя
+
+    python manage.py createsuperuser
+
+Вводим имя пользователя, электронную почту и пароль
+
+Регистрация приложений в админ-панели
+
+women/admin.py
+
+```python
+from django.contrib import admin
+from .models import Women
+
+# Register your models here.
+
+admin.site.register(Women)
+```
+
+purch_manager/admin.py
+
+```python
+from django.contrib import admin
+from .models import UploadDeficitFiles
+# Register your models here.
+
+admin.site.register(UploadDeficitFiles)
+
+```
+
+Данные приложения теперь отображаются в админ-панели сайта
+Если нажать на пост, то, доступна кнопка "Смотреть на сайте". Позволяет это сделать метод get_absolute_url определенный в модели
+
+Для изменения заголовка в админ панели:
+
+sitewomen/urls.py
+
+    admin.site.site_header = "Панель администрирования"
+    admin.site.index_title = "Известные женщины мира"
+
+Отображение собственных названий приложений:
+В классе модели делаем класс Meta со следующими свойствами 
+purch_manager/models.py
+
+```python
+class Meta:
+    # Отображение названия приложения в админ-панели
+    verbose_name = "Загрузка файла дефицита"
+    verbose_name_plural = "Загрузка файла дефицита"
+```
+purch_manager/apps.py
+```python
+class PurchManagerConfig(AppConfig):
+    # Отображение наименования приложения в админ-панели
+    verbose_name = "Загрузка файла дефицита"
+    # Системные переменные
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'purch_manager'
+```
+
+women/models.py
+```python
+class Meta: 
+# Отображение названия приложения в админ-панели
+    verbose_name = "Известные женщины"
+    verbose_name_plural = "Известные женщины"
+```
+women/apps.py
+```python
+class WomenConfig(AppConfig):
+    # Отображение наименования приложения в админ-панели
+    verbose_name = "Женщины мира"
+    # Системные переменные
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'women'
+```
+
+-----------------------------------------------------------------------
+Настройка отображения дополнительной информации о статье
+-----------------------------------------------------------------------
+
+Отображение дополнительной информации о постах
+
+```python
+@admin.register(Women)
+class WomenAdmin(admin.ModelAdmin):
+    # Для отображения информации о статье в админ-панели
+    list_display = ('id', 'title', 'time_create', 'is_published')
+    # Кликабельность заданного свойства
+    list_display_links = ('id', 'title')
+    # Сортировка
+    ordering = ['time_create', 'title']
+
+# Без использования декоратора класса
+# admin.site.register(Women, WomenAdmin)
+```
+
+Для отображения собственных названий полей в свойствах класса модели необходимо внести параметр
+    
+    verbose_name="..." 
+
+```python
+    title = models.CharField(max_length=255, verbose_name='Заголовок')
+```
+Данный параметр так же позволяет отображать названия полей в формах
+
+Для изменения статуса из админ-панели
+
+```python
+    # Для возможности редактирования
+    list_editable = ('is_published',)
+```
+Так же в модели необходимо внести изменения в параметр choices ы свойствe is_published
+
+```python
+ is_published = models.BooleanField(choices=tuple(map(lambda x: (bool(x[0]), x[1]), Status.choices)),
+                                       default=Status.DRAFT, verbose_name='Статус')
+```
+Это нужно потому, что в классе Status, который наследуется IntegerChoices нет возможных вариантов работы
+с булевым значением.
+
+Пагинация списка:
+
+```python
+     # Пагинация списка
+    list_per_page = 5
+```
+
+
+
+
+-----------------------------------------------------------------
+Кастомное оформление админ-панели
+-----------------------------------------------------------------
+Для оформления создан файл templates/admin/base_site.html
+с содержимым:
+
+```html
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+<div id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a></div>
+{% if user.is_anonymous %}
+  {% include "admin/color_theme_toggle.html" %}
+{% endif %}
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+```
+добавим блок 
+
+```html
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'css/admin/admin.css' %}">
+{% endblock %}
+```
+
+в settings.py добавил:
+
+    STATICFILES_DIRS = [
+        BASE_DIR / 'static',
+    ]
+
+Далее настраиваем оформление админ-панели в файле css
+
+---------------------------------------------------------------------
+Формы №43
+---------------------------------------------------------------------
