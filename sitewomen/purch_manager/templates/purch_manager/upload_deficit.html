@@ -7,11 +7,9 @@
     {% csrf_token %}
     {{ form.as_p }}
 <!--    <p> <input type="file" name="file_upload"> </p>-->
-    <p> <button type="submit">Отправить</button></p>
+    <p> <button type="submit">Сформировать</button></p>
+    <p>{{ form.path }}</p>
 
 </form>
-    <p> <button type="submit"><a href="{% url 'run_deficit' %}">Сформировать дефицит</button>
-
-
 
 {% endblock %}

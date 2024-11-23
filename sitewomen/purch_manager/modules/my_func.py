@@ -10,7 +10,7 @@ from datetime import date
 import locale
 
 
-def input_deficit(deficit_file):
+def input_deficit(path_to_file):
     """
     Функция очищает полученный дефицит от ненужных значений в таблице
     :param deficit_file: файл с таблицей по форме дефицита
@@ -18,7 +18,7 @@ def input_deficit(deficit_file):
              Опционально: pd4_str - Список словарей
     """
     # Загружаем лист Excel в Dataframe
-    deficit_frame = pd.read_excel(deficit_file, sheet_name='TDSheet')
+    deficit_frame = pd.read_excel(path_to_file, sheet_name='TDSheet')
 
     # Метод удаляет строки, со значением NaN. Параметр how='all' - удаляет строки с всеми пустыми значениями
     pd_str = deficit_frame.dropna(how='all')
@@ -55,8 +55,8 @@ def input_deficit(deficit_file):
 
     df = pd.DataFrame(pd4_str)
     print('Преобразование дефицита произведено')
-    print(df.to_markdown)
-    print(df.columns.tolist())
+    # print(df.to_markdown)
+    # print(df.columns.tolist())
 
     return df.to_dict(orient='records')
 

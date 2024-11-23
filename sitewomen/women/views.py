@@ -5,14 +5,14 @@ from django.template.loader import render_to_string
 from django.template.defaultfilters import slugify
 
 from .forms import AddPostForm, UploadFileForm
-from .models import Women, Category, TagPost
+from .models import Women, Category, TagPost, UploadFiles
 
 # Коллекция для вывода меню
 menu = [
     {'title': 'О сайте', 'url_name': 'about'},
     {'title': 'Добавить статью', 'url_name': 'add_page'},
     {'title': 'Обратная связь', 'url_name': 'contact'},
-    {'title': 'Дефицит', 'url_name': 'deficit'},  # Переход к приложению purch_manager
+    {'title': 'Дефицит', 'url_name': 'run_deficit'},  # Переход к приложению purch_manager
     {'title': 'Войти', 'url_name': 'login'},
 ]
 
@@ -26,11 +26,11 @@ def index(request):
     return render(request, "women/index.html", context=data)
 
 
-def handle_uploaded_file(f):
-    # Функция для загрузки файла с оф. док. https://docs.djangoproject.com/en/5.1/topics/http/file-uploads/
-    with open(f"women/media/women/{f.name}", "wb+") as destination:
-        for chunk in f.chunks():
-            destination.write(chunk)
+# def handle_uploaded_file(f):
+#     # Функция для загрузки файла с оф. док. https://docs.djangoproject.com/en/5.1/topics/http/file-uploads/
+#     with open(f"women/media/women/{f.name}", "wb+") as destination:
+#         for chunk in f.chunks():
+#             destination.write(chunk)
 
 
 def about(request):
@@ -41,7 +41,9 @@ def about(request):
     if request.method == 'POST':
         forms = UploadFileForm(request.POST, request.FILES)
         if forms.is_valid():
-            handle_uploaded_file(forms.cleaned_data['file'])
+            # handle_uploaded_file(forms.cleaned_data['file'])
+            fp = UploadFiles(file=forms.cleaned_data['file'])
+            fp.save()
         return redirect('home')
     else:
         forms = UploadFileForm()
@@ -68,7 +70,7 @@ def addpage(request):
     if request.method == 'POST':
         #  Создается объект класса формы, и в него заполняется информация из
         #  полученной коллекции POST
-        form = AddPostForm(request.POST)
+        form = AddPostForm(request.POST, request.FILES)
         # Производится проверка заполненной формы
         if form.is_valid():
             # # print(form.cleaned_data)

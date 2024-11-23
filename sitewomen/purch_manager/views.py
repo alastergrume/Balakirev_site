@@ -25,12 +25,6 @@ def index(request):
     return render(request, "purch_manager/index.html", context=data)
 
 
-# def handle_uploaded_file(f):
-#     # Функция для загрузки файла с оф. док. https://docs.djangoproject.com/en/5.1/topics/http/file-uploads/
-#     with open("women/media/women/daily_deficit.xlsx", "wb+") as destination:
-#         for chunk in f.chunks():
-#             destination.write(chunk)
-
 
 def about(request):
     """
@@ -41,12 +35,14 @@ def about(request):
     # И к нему потом можно обратиться для сохранения файла
     # Можно использовать функции, которые определены документацией
     # https://docs.djangoproject.com/en/5.1/topics/http/file-uploads/
+
     if request.method == "POST":
         form = UploadFilesForm(request.POST, request.FILES)
         if form.is_valid():
             fp = UploadDeficitFiles(file=form.cleaned_data['file'])
             fp.save()
-            # handle_uploaded_file(form.cleaned_data['file'])
+
+            return redirect('run_deficit')
     else:
         form = UploadFilesForm()
     return render(request, "purch_manager/upload_deficit.html",
@@ -57,9 +53,12 @@ def run_deficit(request):
     """
     Функция для просмотра файла дефицита. Берет сохраненный файл и выводит его страницу
     """
+    # Возвращаем путь до последнего созданного файла дефицита, и отправляем в функцию для формирования потребности
+    file_path = f'media/{UploadDeficitFiles.objects.latest('time_create')}'
+    print(file_path)
     if request.method == 'GET':
         try:
-            context = input_deficit(deficit_file='media/uploads_deficit_files/deficit.xlsx')
+            context = input_deficit(path_to_file=file_path)
         except FileNotFoundError:
             return HttpResponse("Файл не найден")
 
