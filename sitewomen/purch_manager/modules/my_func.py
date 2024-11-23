@@ -55,7 +55,8 @@ def input_deficit(deficit_file):
 
     df = pd.DataFrame(pd4_str)
     print('Преобразование дефицита произведено')
-    # print(df.to_dict(orient='records'))
+    print(df.to_markdown)
+    print(df.columns.tolist())
 
     return df.to_dict(orient='records')
 

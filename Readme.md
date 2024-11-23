@@ -1427,3 +1427,157 @@ def addpage(request):
 ---------------------------------------------------------------------
 Формы №47 Связывание формы с моделью
 ---------------------------------------------------------------------
+Для связи формы с моделью необходимо унаследовать класс формы от form.ModelForm
+Затем создать вложенный класс Meta, в котором создать объект класса модели
+и по сути все, поля из модели перейдут в форму, и модель автоматически будет связана с
+формой.
+
+```python
+class AddPostForm(forms.ModelForm):
+
+    cat = forms.ModelChoiceField(queryset=Category.objects.all(), empty_label="Категория не выбрана", label='Категории')
+    husband = forms.ModelChoiceField(queryset=Husband.objects.all(), required=False, empty_label="Не замужем", label='Муж')
+
+    class Meta:
+        model = Women
+        fields = ['title', 'slug', 'content', 'is_published', 'cat', 'husband', 'tags']
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-input'}),
+            'content': forms.Textarea(attrs={'cols': 50, 'rows': 5}),
+        }
+```
+Далее можно указывать так же поля по уже известной конструкции
+
+Так же в форме сразу появляется метод save() для сохранения информации в базу данных
+что позволяет в функции-представления сразу указывать этот метод после валидации формы
+
+```python
+def addpage(request):
+    #  В форме, есть метод POST, в случае отправки информации с формы,
+    #  то будут выполнен данный алгоритм
+    if request.method == 'POST':
+        #  Создается объект класса формы, и в него заполняется информация из
+        #  полученной коллекции POST
+        form = AddPostForm(request.POST)
+        # Производится проверка заполненной формы
+        if form.is_valid():
+            #  Сохранение в базу данных
+            form.save()
+            return redirect('home')
+    #  Если запрос GET, то просто создаем объёкт класса формы.
+    else:
+        form = AddPostForm()
+    data = {
+        'title': "Добавление статьи",
+        'menu': menu,  # Это меню из глобального уровня, чтобы отрабатывал base.html
+        'form': form,  # Подключили созданный объект класса
+    }
+    return render(request, "women/addpage.html", data)
+
+```
+
+---------------------------------------------------------------------
+Формы №48 Загрузка файлов на сервер
+---------------------------------------------------------------------
+
+```html
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{title}}</h1>
+<!--Для загрузки файла на сервер-->
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p><input type="file" name="file_upload"></p>
+    <p><button type="submit">Отправить</button></p>
+</form>
+{% endblock %}
+```
+сделали форму, в ней метод post, параметр enctype ОБЯЗАТЕЛЬНО!!!
+далее поле ввода стандартным тегом input с параметром file, и его 
+название, которое будет использоваться в коллекции POST.FILES 
+в функции представления
+далее кнопка Отправить
+
+Связываем форму с функцией представления: 
+```python
+
+def handle_uploaded_file(f):
+    # Функция для загрузки файла с оф. док. https://docs.djangoproject.com/en/5.1/topics/http/file-uploads/
+    with open(f"women/media/women/{f.name}", "wb+") as destination:
+        for chunk in f.chunks():
+            destination.write(chunk)
+
+
+def about(request):
+    # При отправке файла в форме, в Request создается атрибут FILE
+    # И к нему потом можно обратиться для сохранения файла
+    # Можно использовать функции, которые определены документацией
+    # https://docs.djangoproject.com/en/5.1/topics/http/file-uploads/
+    if request.method == 'POST':
+        handle_uploaded_file(request.FILES['file_upload'])
+        return redirect('home')
+    return render(request, "women/about.html", {'title': "О сайте", 'menu': menu})
+```
+
+Это самый простой способ, который может допускать ошибки вводы
+
+Теперь сделаем форму для отправки файла
+Для этого в файле forms.py определим класс формы для отправки файла
+
+```python
+class UploadFileForm(forms.Form):
+    file = forms.FileField(label='file')
+```
+
+В функции представления объявляем форму в блоке POST
+и отправляем в нее request.POST, request.FILES
+и отправляем форму в шаблон
+
+```python
+    
+def about(request):
+    # При отправке файла в форме, в Request создается атрибут FILE
+    # И к нему потом можно обратиться для сохранения файла
+    # Можно использовать функции, которые определены документацией
+    # https://docs.djangoproject.com/en/5.1/topics/http/file-uploads/
+    if request.method == 'POST':
+        forms = UploadFileForm(request.POST, request.FILES)
+        # handle_uploaded_file(request.FILES['file_upload'])
+        # return redirect('home')
+    else:
+        forms = UploadFileForm()
+    return render(request, "women/about.html", {'title': "О сайте", 'menu': menu, 'form': 'forms'})
+
+
+```
+
+и отобразили в шаблоне созданную форму
+
+```html
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{title}}</h1>
+<!--Для загрузки файла на сервер-->
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% form.as_p %}
+<!--    <p><input type="file" name="file_upload"></p>-->
+    <p><button type="submit">Отправить</button></p>
+</form>
+{% endblock %}
+```
+
+Далее делаем проверку формы и после чего совершаем сохранение через фукнцию из оф. док
+
+```python
+    if request.method == 'POST':
+        forms = UploadFileForm(request.POST, request.FILES)
+        if forms.is_valid():
+            handle_uploaded_file(forms.cleaned_data['file'])
+```
+
+---------------------------------------------------------------------
+Формы №49 Загрузка файлов на сервер с использованием модели
+---------------------------------------------------------------------

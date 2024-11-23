@@ -4,7 +4,7 @@ from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from django.template.loader import render_to_string
 from django.template.defaultfilters import slugify
 
-from .forms import AddPostForm
+from .forms import AddPostForm, UploadFileForm
 from .models import Women, Category, TagPost
 
 # Коллекция для вывода меню
@@ -26,11 +26,11 @@ def index(request):
     return render(request, "women/index.html", context=data)
 
 
-# def handle_uploaded_file(f):
-#     # Функция для загрузки файла с оф. док. https://docs.djangoproject.com/en/5.1/topics/http/file-uploads/
-#     with open("women/media/women/daily_deficit.xlsx", "wb+") as destination:
-#         for chunk in f.chunks():
-#             destination.write(chunk)
+def handle_uploaded_file(f):
+    # Функция для загрузки файла с оф. док. https://docs.djangoproject.com/en/5.1/topics/http/file-uploads/
+    with open(f"women/media/women/{f.name}", "wb+") as destination:
+        for chunk in f.chunks():
+            destination.write(chunk)
 
 
 def about(request):
@@ -38,8 +38,14 @@ def about(request):
     # И к нему потом можно обратиться для сохранения файла
     # Можно использовать функции, которые определены документацией
     # https://docs.djangoproject.com/en/5.1/topics/http/file-uploads/
-
-    return render(request, "women/about.html", {'title': "О сайте", 'menu': menu})
+    if request.method == 'POST':
+        forms = UploadFileForm(request.POST, request.FILES)
+        if forms.is_valid():
+            handle_uploaded_file(forms.cleaned_data['file'])
+        return redirect('home')
+    else:
+        forms = UploadFileForm()
+    return render(request, "women/about.html", {'title': "О сайте", 'menu': menu, 'form': forms})
 
 
 def show_post(request, post_slug):  # Получаем из Get запроса id поста
@@ -65,16 +71,20 @@ def addpage(request):
         form = AddPostForm(request.POST)
         # Производится проверка заполненной формы
         if form.is_valid():
-            # print(form.cleaned_data)
-            # Распаковка полученных данных из формы в базу данных
-            try:
-                Women.objects.create(
-                    **form.cleaned_data)  # Если бы названия полей и названия модели не совпадали, то было бы не возможно распаковать данные подобным образом
-                # Возврат на домашнюю страницу
-                return redirect('home')
-            except:
-                # Отработка ошибок, связанных с ошибками доабвления в базу данных
-                form.add_error(None, "Ошибка добавления поста")
+            # # print(form.cleaned_data)
+            # # Распаковка полученных данных из формы в базу данных
+            # try:
+            #     Women.objects.create(
+            #         **form.cleaned_data)  # Если бы названия полей и названия модели не совпадали, то было бы не возможно распаковать данные подобным образом
+            #     # Возврат на домашнюю страницу
+            #     return redirect('home')
+            # except:
+            #     # Отработка ошибок, связанных с ошибками доабвления в базу данных
+            #     form.add_error(None, "Ошибка добавления поста")
+
+            #  Сохранение в базу дынных в случае связанной с моделью формы
+            form.save()
+            return redirect('home')
     #  Если запрос GET, то просто создаем объёкт класса формы.
     else:
         form = AddPostForm()

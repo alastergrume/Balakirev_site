@@ -5,13 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="96067450-b0c7-49aa-99b8-cf3cedf66093" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/img.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/sitewomen/women/templates/women/addpage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sitewomen/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/purch_manager/modules/my_func.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/purch_manager/modules/my_func.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/purch_manager/templates/purch_manager/run_deficit.html" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/purch_manager/templates/purch_manager/run_deficit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/purch_manager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/purch_manager/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sitewomen/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sitewomen/women/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/women/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/women/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/templates/women/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/women/templates/women/about.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sitewomen/women/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/women/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

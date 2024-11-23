@@ -23,8 +23,8 @@ class Women(models.Model):
 
     title = models.CharField(max_length=255, verbose_name='Заголовок')
     # поле для создания слага, он уникальный и индексируемый
-    slug = models.SlugField(max_length=255, unique=True, db_index=True)
-    content = models.TextField(blank=True)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='URL')
+    content = models.TextField(blank=True, verbose_name='Текст статьи')
     time_create = models.DateTimeField(auto_now_add=True, verbose_name='Время создания')
     time_update = models.DateTimeField(auto_now=True)
     # В свойстве применяется класс для задания статуса.
@@ -33,9 +33,10 @@ class Women(models.Model):
     # Связь с классом Category через связь один ко многим. Используется ForeignKey
     cat = models.ForeignKey('Category', on_delete=models.PROTECT, related_name='posts', verbose_name="Категория")
     # Связь с классом TagPost через ManyToMany Многие ко многим
-    tags = models.ManyToManyField('TagPost', blank=True, related_name='tags')
+    tags = models.ManyToManyField('TagPost', blank=True, related_name='tags', verbose_name='Тэг')
 
-    husband = models.OneToOneField('Husband', on_delete=models.SET_NULL, null=True, blank=True, related_name='women')
+    husband = models.OneToOneField('Husband', on_delete=models.SET_NULL, null=True, blank=True, related_name='women',
+                                   verbose_name='Муж')
 
     # Определение менеджеров чтения строк базы данных. Если задать кастомный менеджер,
     # то так же необходимо указать менеджер по умолчанию, чтобы он продолжал работать.
