@@ -5,24 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="96067450-b0c7-49aa-99b8-cf3cedf66093" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/sitewomen/static/css/admin/admin.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sitewomen/templates/admin/base_site.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sitewomen/women/templates/women/list_tags.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sitewomen/women/templates/women/addpage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sitewomen/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sitewomen/purch_manager/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/purch_manager/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sitewomen/purch_manager/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/purch_manager/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sitewomen/purch_manager/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/purch_manager/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sitewomen/sitewomen/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/sitewomen/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sitewomen/sitewomen/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/sitewomen/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sitewomen/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sitewomen/women/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/women/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sitewomen/women/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/women/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sitewomen/women/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/women/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sitewomen/women/templates/women/post.html" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/women/templates/women/post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sitewomen/women/templatetags/women_tags.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/women/templatetags/women_tags.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sitewomen/women/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/women/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/women/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sitewomen/women/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/women/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,19 +56,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Python.main.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.sitewomen.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore_missing_gitignore&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/PycharmProjects/Balakirev_site/sitewomen/purch_manager&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Python.main.executor": "Debug",
+    "Python.sitewomen.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "ignore_missing_gitignore": "true",
+    "last_opened_file_path": "E:/PycharmProjects/Balakirev_site/sitewomen/purch_manager",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\PycharmProjects\Balakirev_site\sitewomen\purch_manager" />
@@ -161,5 +150,16 @@
       <updated>1729784744571</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
