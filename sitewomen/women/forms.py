@@ -1,9 +1,11 @@
 from django import forms
-from .models import Category, Husband, Women
+from .models import Category, Husband, Women, CommentModel
 
 
 class AddPostForm(forms.ModelForm):
-
+    """
+    Форма для создания поста
+    """
     cat = forms.ModelChoiceField(queryset=Category.objects.all(), empty_label="Категория не выбрана", label='Категории')
     husband = forms.ModelChoiceField(queryset=Husband.objects.all(), required=False, empty_label="Не замужем", label='Муж')
 
@@ -27,3 +29,22 @@ class AddPostForm(forms.ModelForm):
 
 class UploadFileForm(forms.Form):
     file = forms.FileField(label='Файл')
+
+
+
+class CommentForm(forms.ModelForm):
+    """
+    Форма для отображения комментариев поста
+    """
+    comment = forms.CharField(
+        widget=forms.Textarea(
+            attrs={
+                "class": 'form-control',
+                "placeholder": "Введите текст комментария",
+                "rows": 5
+            }
+        ),
+    )
+    class Meta:
+        model = CommentModel
+        fields = ("comment",)

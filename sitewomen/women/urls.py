@@ -8,7 +8,7 @@ register_converter(converters.FourDigitYearConverter, 'year4')
 urlpatterns = [
     path('', views.index, name='home'),
     path('about/', views.about, name='about'),
-    path('addpage/', views.addpage, name='add_page'),
+    path('addpage/', views.AddPage.as_view(), name='add_page'), # Ссылка на класс для добавления постов, если использовать фукнцию, то нужно прописать addpage
     path('contact/', views.contact, name='contact'),
     path('login/', views.login, name='login'),
     path('post/<slug:post_slug>/', views.show_post, name='post'),  # Маршрут для отображения страницы show_post

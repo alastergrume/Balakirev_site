@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 
@@ -122,3 +123,24 @@ class Husband(models.Model):
 
 class UploadFiles(models.Model):
     file = models.FileField(upload_to='uploads_model/')
+
+
+class CommentModel(models.Model):
+    """
+    База для сохранения комментариев
+    """
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="ПользоватеWль")
+    post = models.ForeignKey(Women, on_delete=models.CASCADE, verbose_name="Пост", related_name='comments')
+    comment = models.TextField(verbose_name="Комментарии")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+    class Meta:
+        verbose_name = "Комментарий"
+        verbose_name_plural = "Комментарии"
+
+
+    def __str__(self):
+        return f"Комментарий от {self.user} к посту {self.post}"
+
+

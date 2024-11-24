@@ -24,6 +24,27 @@
 <p><img class="img-article-left" src="{{post.photo.url}}"></p>
 {% endif %}
 
+
 <!--Отображение содержимого статьи, и добавляем фильтр для переноса строк -->
 {{post.content|linebreaks}}
+
+{% for comment in comment_text %}
+<div class="comment-text" style="font-size: 14px">
+<!--     style="font-size: 14px" -->
+
+        <p class="comment"> <em> Пользователь - {{comment.user}} / Дата создания - {{comment.created_at}} </em></p>
+        <p class="text_comment"> {{comment.comment|linebreaks}} </p>
+</div>
+{% endfor %}
+
+<form action="" method="post">
+    {% csrf_token %}
+
+    <p>Добавить комментарий</p>
+    {{ comment.comment }}
+    <p>
+        <button type="submit">Отправить</button>
+    </p>
+</form>
+
 {% endblock %}

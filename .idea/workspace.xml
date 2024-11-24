@@ -9,8 +9,23 @@
       <change beforePath="$PROJECT_DIR$/sitewomen/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sitewomen/media/uploads_deficit_files/2024/11/24/deficit_2024-10-22_deficit_1_1.xlsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/sitewomen/purch_manager/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/purch_manager/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/purch_manager/static/women/css/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/purch_manager/static/women/images/blockquote.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/purch_manager/static/women/images/btn_yt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/purch_manager/static/women/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/purch_manager/static/women/images/main.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/purch_manager/static/women/images/share_yt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/purch_manager/static/women/images/smallmenu.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/sitewomen/purch_manager/templates/purch_manager/run_deficit.html" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/purch_manager/templates/purch_manager/run_deficit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sitewomen/purch_manager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/purch_manager/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/sitewomen/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/sitewomen/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/women/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/women/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/women/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/static/women/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/women/static/women/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/templates/women/post.html" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/women/templates/women/post.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/women/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/women/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,16 +79,17 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "ignore_missing_gitignore": "true",
-    "last_opened_file_path": "E:/PycharmProjects/Balakirev_site/sitewomen/purch_manager",
+    "last_opened_file_path": "E:/PycharmProjects/Balakirev_site/sitewomen/static/css",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\PycharmProjects\Balakirev_site\sitewomen\static\css" />
+      <recent name="E:\PycharmProjects\Balakirev_site\sitewomen\static" />
       <recent name="E:\PycharmProjects\Balakirev_site\sitewomen\purch_manager" />
       <recent name="E:\PycharmProjects\Balakirev_site\sitewomen\purch_manager\templates\purch_manager" />
       <recent name="E:\PycharmProjects\Balakirev_site\sitewomen\women\modules" />
-      <recent name="E:\PycharmProjects\Balakirev_site\sitewomen\women" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\PycharmProjects\Balakirev_site\sitewomen\women\templates\women" />
@@ -188,5 +204,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/sitewomen/purch_manager/views.py</url>
+          <line>59</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

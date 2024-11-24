@@ -420,3 +420,7 @@ td.one {
 td.col-vo {
     text-align: center;
 }
+
+div.comment-text {
+    font-size: 14px;
+}

@@ -1,11 +1,14 @@
+from django.contrib.auth.models import User
 from django.http import HttpResponseNotFound, Http404
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 
 from django.template.loader import render_to_string
 from django.template.defaultfilters import slugify
+from django.urls import reverse
+from django.views import View
 
-from .forms import AddPostForm, UploadFileForm
-from .models import Women, Category, TagPost, UploadFiles
+from .forms import AddPostForm, UploadFileForm, CommentForm
+from .models import Women, Category, TagPost, UploadFiles, CommentModel
 
 # Коллекция для вывода меню
 menu = [
@@ -19,9 +22,11 @@ menu = [
 
 def index(request):
     posts = Women.published.all()
+    comments = CommentModel.objects.all()
     data = {'title': 'Главная страница',
             'menu': menu,
             'posts': posts,
+            'comments': comments,
             }
     return render(request, "women/index.html", context=data)
 
@@ -34,6 +39,9 @@ def index(request):
 
 
 def about(request):
+    """
+    Добавление изображений
+    """
     # При отправке файла в форме, в Request создается атрибут FILE
     # И к нему потом можно обратиться для сохранения файла
     # Можно использовать функции, которые определены документацией
@@ -51,51 +59,88 @@ def about(request):
 
 
 def show_post(request, post_slug):  # Получаем из Get запроса id поста
-    # Обращаемся к базе данных Women, и возвращаем из неё строку, соответствующую ID записи
+    """
+    Отображение статьи
+    """
+    comment = CommentForm()
+    if request.method == "POST":
+        comment = CommentForm(request.POST)
+        if comment.is_valid():
+            text_of_comment = comment.cleaned_data['comment']
+            user = request.user
+            post = Women.objects.filter(slug=post_slug)[0]
+            CommentModel.objects.create(comment=text_of_comment,
+                                        user=user,
+                                        post=post,
+                                        )
+        return redirect('post', post_slug)
+    # Обращаемся к базе данных Women, и возвращаем из неё строку, соответствующую slug записи
     post = get_object_or_404(Women, slug=post_slug)
+    first_model = Women.objects.get(slug=post_slug)
+    comment_text = first_model.comments.all()
+
     # Формируем словарь из переменных, для их открытия в форме HTML
     data = {
         'title': post.title,
         # Обращаемся к коллекции post (строка из базы данных и сохраняем в ней наименование строки)
         'menu': menu,  # Это меню из глобального уровня, чтобы отрабатывал base.html
         'post': post,  # Это весь объект post
+        'comment': comment,
+        'comment_text': comment_text,
         'cat_selected': 1,
     }
     return render(request, "women/post.html", data)
 
 
-def addpage(request):
-    #  В форме, есть метод POST, в случае отправки информации с формы,
-    #  то будут выполнен данный алгоритм
-    if request.method == 'POST':
-        #  Создается объект класса формы, и в него заполняется информация из
-        #  полученной коллекции POST
-        form = AddPostForm(request.POST, request.FILES)
-        # Производится проверка заполненной формы
-        if form.is_valid():
-            # # print(form.cleaned_data)
-            # # Распаковка полученных данных из формы в базу данных
-            # try:
-            #     Women.objects.create(
-            #         **form.cleaned_data)  # Если бы названия полей и названия модели не совпадали, то было бы не возможно распаковать данные подобным образом
-            #     # Возврат на домашнюю страницу
-            #     return redirect('home')
-            # except:
-            #     # Отработка ошибок, связанных с ошибками доабвления в базу данных
-            #     form.add_error(None, "Ошибка добавления поста")
+class AddPage(View):
+    """
+    Класс для добавления постов
+    """
+    def get(self, request):
+        form = AddPostForm()
+        return render(request, "women/addpage.html", {'menu': menu, 'title': "Добавление статьи", 'form': form})
 
-            #  Сохранение в базу дынных в случае связанной с моделью формы
+    def post(self, request):
+        form = AddPostForm(request.POST, request.FILES)
+        if form.is_valid():
             form.save()
             return redirect('home')
-    #  Если запрос GET, то просто создаем объёкт класса формы.
-    else:
-        form = AddPostForm()
-    data = {
-        'title': "Добавление статьи",
-        'menu': menu,  # Это меню из глобального уровня, чтобы отрабатывал base.html
-        'form': form,  # Подключили созданный объект класса
-    }
-    return render(request, "women/addpage.html", data)
+        return render(request, "women/addpage.html", {'menu': menu, 'title': "Добавление статьи", 'form': form})
+
+# Функция для добавления постов, закрыта пока есть класс выше
+
+# def addpage(request):
+#     #  В форме, есть метод POST, в случае отправки информации с формы,
+#     #  то будут выполнен данный алгоритм
+#     if request.method == 'POST':
+#         #  Создается объект класса формы, и в него заполняется информация из
+#         #  полученной коллекции POST
+#         form = AddPostForm(request.POST, request.FILES)
+#         # Производится проверка заполненной формы
+#         if form.is_valid():
+#             # # print(form.cleaned_data)
+#             # # Распаковка полученных данных из формы в базу данных
+#             # try:
+#             #     Women.objects.create(
+#             #         **form.cleaned_data)  # Если бы названия полей и названия модели не совпадали, то было бы не возможно распаковать данные подобным образом
+#             #     # Возврат на домашнюю страницу
+#             #     return redirect('home')
+#             # except:
+#             #     # Отработка ошибок, связанных с ошибками доабвления в базу данных
+#             #     form.add_error(None, "Ошибка добавления поста")
+#
+#             #  Сохранение в базу дынных в случае связанной с моделью формы
+#             form.save()
+#             return redirect('home')
+#     #  Если запрос GET, то просто создаем объёкт класса формы.
+#     else:
+#         form = AddPostForm()
+#     data = {
+#         'title': "Добавление статьи",
+#         'menu': menu,  # Это меню из глобального уровня, чтобы отрабатывал base.html
+#         'form': form,  # Подключили созданный объект класса
+#     }
+#     return render(request, "women/addpage.html", data)
 
 
 def contact(request):
