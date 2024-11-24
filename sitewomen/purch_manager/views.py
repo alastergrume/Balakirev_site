@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseNotFound, Http404
 from django.shortcuts import render, HttpResponse, redirect
 from .modules.my_func import input_deficit
-from .forms import UploadFilesForm
+from .forms import UploadFilesForm, RunFilesDeficit
 
 from django.template.loader import render_to_string
 from django.template.defaultfilters import slugify
@@ -54,10 +54,24 @@ def run_deficit(request):
     Функция для просмотра файла дефицита. Берет сохраненный файл и выводит его страницу
     """
     # Возвращаем путь до последнего созданного файла дефицита, и отправляем в функцию для формирования потребности
-    file_path = f'media/{UploadDeficitFiles.objects.latest('time_create')}'
-    print(file_path)
+
+    # Форма для выбора файла формирования дефицита
+    form = RunFilesDeficit()
+    if request.method == 'POST':
+        #  Вытаскиваем значение id из request
+        id_pk = request.POST['file']
+        #  Ищем позицию по id
+        file_path_id = UploadDeficitFiles.objects.filter(pk=id_pk)
+        #  Возвращает путь к файлу, который был выбран в форме
+        context = input_deficit(path_to_file=f'media/{file_path_id[0]}')
+        return render(request, 'purch_manager/run_deficit.html', {'context': context,
+                                                                  'menu': menu, 'form': form})
+    # print(file_path)
     if request.method == 'GET':
+        #  Формируем путь к файлу из базы по последнему добавленному элементу
+        file_path = f'media/{UploadDeficitFiles.objects.latest('time_create')}'
         try:
+            # отправляем в функцию
             context = input_deficit(path_to_file=file_path)
         except FileNotFoundError:
             return HttpResponse("Файл не найден")
@@ -65,7 +79,7 @@ def run_deficit(request):
         # Отправляем в форму context, тут DataFrame из функции create deficit
         # и menu для того чтобы пользоваться base.html
         return render(request, 'purch_manager/run_deficit.html', {'context': context,
-                                                                  'menu': menu})
+                                                                  'menu': menu, 'form': form})
 
 
 def page_not_found(request, exception):

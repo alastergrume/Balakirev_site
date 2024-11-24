@@ -5,6 +5,12 @@
     <h1> Дефицит на сегодня </h1>
     <div class="deficit">
 
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <p> <button type="submit">Сформировать</button></p>
+        </form>
+
 
     <table class="table_of_deficit" border="collapse" width="100%">
         {% for cont in context %}
