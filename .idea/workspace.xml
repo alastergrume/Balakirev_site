@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="96067450-b0c7-49aa-99b8-cf3cedf66093" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/media/uploads_deficit_files/2024/11/24/deficit_2024-10-22_deficit_1_1.xlsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/sitewomen/purch_manager/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/purch_manager/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sitewomen/purch_manager/templates/purch_manager/run_deficit.html" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/purch_manager/templates/purch_manager/run_deficit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sitewomen/purch_manager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/sitewomen/purch_manager/views.py" afterDir="false" />

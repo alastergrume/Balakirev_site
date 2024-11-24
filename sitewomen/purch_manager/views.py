@@ -16,14 +16,11 @@ menu = [
 ]
 
 
-
-
 def index(request):
     data = {'title': 'Главная страница',
             'menu': menu,
             }
     return render(request, "purch_manager/index.html", context=data)
-
 
 
 def about(request):
@@ -53,33 +50,30 @@ def run_deficit(request):
     """
     Функция для просмотра файла дефицита. Берет сохраненный файл и выводит его страницу
     """
-    # Возвращаем путь до последнего созданного файла дефицита, и отправляем в функцию для формирования потребности
-
     # Форма для выбора файла формирования дефицита
     form = RunFilesDeficit()
+
     if request.method == 'POST':
         #  Вытаскиваем значение id из request
-        id_pk = request.POST['file']
-        #  Ищем позицию по id
-        file_path_id = UploadDeficitFiles.objects.filter(pk=id_pk)
+        # id_pk = request.POST['file']
+        #  Ищем позицию по id, в качестве параметра pk отправляем информацию об id из переменной request.POST['file']
+        file_path_id = UploadDeficitFiles.objects.filter(pk=request.POST['file'])
         #  Возвращает путь к файлу, который был выбран в форме
-        context = input_deficit(path_to_file=f'media/{file_path_id[0]}')
-        return render(request, 'purch_manager/run_deficit.html', {'context': context,
-                                                                  'menu': menu, 'form': form})
-    # print(file_path)
-    if request.method == 'GET':
+        file_path = f'media/{file_path_id[0]}'
+
+    elif request.method == 'GET':
         #  Формируем путь к файлу из базы по последнему добавленному элементу
         file_path = f'media/{UploadDeficitFiles.objects.latest('time_create')}'
-        try:
-            # отправляем в функцию
-            context = input_deficit(path_to_file=file_path)
-        except FileNotFoundError:
-            return HttpResponse("Файл не найден")
 
-        # Отправляем в форму context, тут DataFrame из функции create deficit
-        # и menu для того чтобы пользоваться base.html
-        return render(request, 'purch_manager/run_deficit.html', {'context': context,
-                                                                  'menu': menu, 'form': form})
+    #  отправляем в функцию путь к выбранному файлу
+    try:
+        context = input_deficit(path_to_file=file_path)
+    except FileNotFoundError:
+        return HttpResponse('Файл не найден')
+    #  Отправляем в форму context, тут DataFrame из функции create deficit
+    #  и menu для того чтобы пользоваться base.html
+    return render(request, 'purch_manager/run_deficit.html', {'context': context,
+                                                              'menu': menu, 'form': form})
 
 
 def page_not_found(request, exception):

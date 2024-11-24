@@ -8,5 +8,6 @@ class UploadFilesForm(forms.Form):
 
 
 class RunFilesDeficit(forms.Form):
+    #  Это виджет, который выводит список всех файлов из базы данных
     file = forms.ModelChoiceField(queryset=UploadDeficitFiles.objects.all(), empty_label='Последний файл',
                                   label='Файлы')
