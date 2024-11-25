@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'women.apps.WomenConfig',
-    'purch_manager.apps.PurchManagerConfig'
+    'purch_manager.apps.PurchManagerConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [

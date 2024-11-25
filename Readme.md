@@ -1583,3 +1583,147 @@ def about(request):
 ---------------------------------------------------------------------
 
 Определи модель в который будут хранится ссылки на загруженные данные
+
+
+********************************************************************
+Сделал сам комментарии и выбор файлов для формирования дефицита!
+********************************************************************
+
+---------------------------------------------------------------------
+Аторизация №59 Авторизация пользователей
+---------------------------------------------------------------------
+Для авторизации и регистрации создадим отдельное приложение users
+
+    python manage.py startapp users  
+
+Регистрируем в instalapps
+
+    'users.apps.UsersConfig',
+
+Создаем файл urls.py
+
+```python
+from django.urls import path
+from . import views
+
+app_name = "users"
+
+urlpatterns = [
+    path('login/', views.login_user, name='login'),
+    path('logout/', views.logout_user, name='logout'),
+]
+```
+
+Добавили в sitewomen/urls.py
+    
+    path('users/', include('users.urls', namespace='users')),
+
+Добавилил функции представления:
+
+```python
+from django.http import HttpResponse
+from django.shortcuts import render
+
+
+# Create your views here.
+
+def login_user(request):
+    return HttpResponse("Вход")
+
+
+def logout_user(request):
+    return HttpResponse("Выход")
+
+```
+
+
+---------------------------------------------------------------------
+Аторизация №60 Страницы для авторизации
+---------------------------------------------------------------------
+
+Создадим файл forms.py
+
+```python
+from django import forms
+
+
+class LoginUserForm(forms.Form):
+    username = forms.CharField(label="Логин", widget=forms.TextInput(attrs={"class": "form-input"}))
+    password = forms.CharField(label="Пароль", widget=forms.PasswordInput(attrs={"class": "form-input"}))
+```
+
+Создадим папку users/templates/users
+в ней файл login.html
+
+```html
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Авторизация</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <p>
+        <button type="submit">Войти</button>
+    </p>
+    
+</form>
+
+{% endblock %}
+```
+Функция представления для авторизации
+
+```python
+def login_user(request):
+
+    if request.method == "POST":
+        form = LoginUserForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            user = authenticate(request, username=cd['username'], password=cd['password'])
+
+            if user and user.is_active:
+                login(request, user)
+                return HttpResponseRedirect(reverse('home'))
+    else:
+        form = LoginUserForm()
+    return render(request, 'users/login.html', {'form': form})
+```
+
+Для выхода функция представления:
+
+```python
+def logout_user(request):
+    logout(request)
+    return HttpResponseRedirect(reverse("users:login"))
+
+```
+
+Механизм входа и выхода реализован в шаблоне base.html
+
+```html
+{% block mainmenu %}
+		<div class="header">
+			<ul id="mainmenu" class="mainmenu">
+				<li class="logo"><a href="{% url 'home' %}"><div class="logo"></div></a></li>
+					<!--Применили тэг из файла women_tags.py для отображения меню-->
+					{% get_menu as menu %}
+					<!--Перебираем меню, и присваиваем url страницы-->
+					{% for m in menu %}
+						<li><a href="{% url m.url_name %}">{{m.title}}</a></li>
+					{% endfor %}
+					<!--Проверка авторизации пользователя-->
+					{% if user.is_authenticated %}
+						<!--Если авторизован, то выводится имя пользователя и кнопка выйти-->
+						<li class="last">{{user.username}} | <a href="{% url 'users:logout' %}">Выйти</a></li>
+					{% else %}
+						<!--Иначе выводится кнопки Войти, Регистрация-->
+						<li class="last"><a href="{% url 'users:login' %}">Войти</a> | <a href="#">Регистрация</a></li>
+					{% endif %}
+			</ul>
+			<div class="clear"></div>
+		</div>
+{% endblock mainmenu %}
+
+```
+

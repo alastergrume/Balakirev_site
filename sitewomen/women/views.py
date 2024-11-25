@@ -15,8 +15,9 @@ menu = [
     {'title': 'О сайте', 'url_name': 'about'},
     {'title': 'Добавить статью', 'url_name': 'add_page'},
     {'title': 'Обратная связь', 'url_name': 'contact'},
-    {'title': 'Дефицит', 'url_name': 'run_deficit'},  # Переход к приложению purch_manager
-    {'title': 'Войти', 'url_name': 'login'},
+    {'title': 'Отображение дефицита', 'url_name': 'run_deficit'},
+    {'title': 'Формирование дефицита', 'url_name': 'upload_deficit'},
+    # {'title': 'Войти', 'url_name': 'login'},
 ]
 
 
@@ -24,7 +25,6 @@ def index(request):
     posts = Women.published.all()
     comments = CommentModel.objects.all()
     data = {'title': 'Главная страница',
-            'menu': menu,
             'posts': posts,
             'comments': comments,
             }
@@ -55,7 +55,7 @@ def about(request):
         return redirect('home')
     else:
         forms = UploadFileForm()
-    return render(request, "women/about.html", {'title': "О сайте", 'menu': menu, 'form': forms})
+    return render(request, "women/about.html", {'title': "О сайте", 'form': forms})
 
 
 def show_post(request, post_slug):  # Получаем из Get запроса id поста
@@ -83,7 +83,6 @@ def show_post(request, post_slug):  # Получаем из Get запроса i
     data = {
         'title': post.title,
         # Обращаемся к коллекции post (строка из базы данных и сохраняем в ней наименование строки)
-        'menu': menu,  # Это меню из глобального уровня, чтобы отрабатывал base.html
         'post': post,  # Это весь объект post
         'comment': comment,
         'comment_text': comment_text,
@@ -98,14 +97,14 @@ class AddPage(View):
     """
     def get(self, request):
         form = AddPostForm()
-        return render(request, "women/addpage.html", {'menu': menu, 'title': "Добавление статьи", 'form': form})
+        return render(request, "women/addpage.html", {'title': "Добавление статьи", 'form': form})
 
     def post(self, request):
         form = AddPostForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('home')
-        return render(request, "women/addpage.html", {'menu': menu, 'title': "Добавление статьи", 'form': form})
+        return render(request, "women/addpage.html", {'title': "Добавление статьи", 'form': form})
 
 # Функция для добавления постов, закрыта пока есть класс выше
 
@@ -157,7 +156,6 @@ def show_category(request, cat_slug):
 
     data = {
         'title': f'Рубрика: {category.name}',
-        'menu': menu,
         'posts': posts,
         'cat_selected': category.pk,
     }
@@ -179,7 +177,6 @@ def show_tag_postlist(request, tag_slug):
 
     data = {
         'title': f'Tag: {tag.tag}',
-        'menu': menu,
         'posts': posts,
         'cat_selected': None,
     }

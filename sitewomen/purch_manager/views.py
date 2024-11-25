@@ -9,16 +9,16 @@ from django.template.defaultfilters import slugify
 
 from .models import UploadDeficitFiles
 
-menu = [
-    {'title': 'Формирование дефицита', 'url_name': 'upload_deficit'},
-    {'title': 'Отображение дефицита', 'url_name': 'run_deficit'},
-
-]
+# menu = [
+#     {'title': 'Формирование дефицита', 'url_name': 'upload_deficit'},
+#     {'title': 'Отображение дефицита', 'url_name': 'run_deficit'},
+#
+# ]
 
 
 def index(request):
     data = {'title': 'Главная страница',
-            'menu': menu,
+            # 'menu': menu,
             }
     return render(request, "purch_manager/index.html", context=data)
 
@@ -43,7 +43,7 @@ def about(request):
     else:
         form = UploadFilesForm()
     return render(request, "purch_manager/upload_deficit.html",
-                  {'title': "Загрузить файл", 'menu': menu, 'form': form})
+                  {'title': "Загрузить файл", 'form': form})
 
 
 def run_deficit(request):
@@ -73,7 +73,7 @@ def run_deficit(request):
     #  Отправляем в форму context, тут DataFrame из функции create deficit
     #  и menu для того чтобы пользоваться base.html
     return render(request, 'purch_manager/run_deficit.html', {'context': context,
-                                                              'menu': menu, 'form': form})
+                                                              'form': form})
 
 
 def page_not_found(request, exception):

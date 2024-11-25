@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('women.urls')),  # Направляемся на URLS  в приложении women
     path('', include('purch_manager.urls')),  # Направляемся на URLS в приложении purch_manager
+    path('users/', include('users.urls', namespace='users')),
 ]
 
 
