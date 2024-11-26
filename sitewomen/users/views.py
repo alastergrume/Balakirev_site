@@ -3,13 +3,12 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from users.forms import LoginUserForm
+from users.forms import LoginUserForm, RegisterUserForm
 
 
 # Create your views here.
 
 def login_user(request):
-
     if request.method == "POST":
         form = LoginUserForm(request.POST)
         if form.is_valid():
@@ -27,3 +26,16 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     return HttpResponseRedirect(reverse("users:login"))
+
+
+def register(request):
+    if request.method == 'POST':
+        form = RegisterUserForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data['password'])
+            user.save()
+            return render(request, 'users/register_done.html')
+    else:
+        form = RegisterUserForm()
+        return render(request, "users/register.html", {"form": form})

@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponseNotFound, Http404
 from django.shortcuts import render, HttpResponse, redirect
+
+
 from .modules.my_func import input_deficit
 from .forms import UploadFilesForm, RunFilesDeficit
 
@@ -82,3 +84,6 @@ def page_not_found(request, exception):
     :return: Страницу с надписью "Страница не найдена"
     """
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
+
+
+
