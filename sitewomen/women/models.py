@@ -38,7 +38,7 @@ class Women(models.Model):
     # Связь с классом Category через связь один ко многим. Используется ForeignKey
     cat = models.ForeignKey('Category', on_delete=models.PROTECT, related_name='posts', verbose_name="Категория")
     # Связь с классом TagPost через ManyToMany Многие ко многим
-    tags = models.ManyToManyField('TagPost', blank=True, related_name='tags', verbose_name='Тэг')
+    tags = models.ManyToManyField('TagPost', blank=True, related_name='tags', verbose_name='Сотрудник')
 
     husband = models.OneToOneField('Husband', on_delete=models.SET_NULL, null=True, blank=True, related_name='women',
                                    verbose_name='Муж')
@@ -55,8 +55,8 @@ class Women(models.Model):
 
     class Meta:
         # Отображение названия приложения в админ-панели
-        verbose_name = "Известные женщины"
-        verbose_name_plural = "Известные женщины"
+        verbose_name = "Задачи"
+        verbose_name_plural = "Задачи"
         # сортировки строк в базе данных
         ordering = ['-time_create']
         indexes = [
@@ -129,7 +129,7 @@ class CommentModel(models.Model):
     """
     База для сохранения комментариев
     """
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="ПользоватеWль")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Пользователь")
     post = models.ForeignKey(Women, on_delete=models.CASCADE, verbose_name="Пост", related_name='comments')
     comment = models.TextField(verbose_name="Комментарии")
     created_at = models.DateTimeField(auto_now_add=True)

@@ -1,5 +1,6 @@
 https://timeweb.cloud/tutorials/django/kak-ustanovit-django-nginx-i-gunicorn-na-virtualnyj-server
 https://alexlinus.ru/blog/deploy-django-proekta-na-vps/?ysclid=m2t8zttv5h80178401
+https://timeweb.cloud/tutorials/ubuntu/zashchita-nginx-s-pomoshchyu-let-s-encrypt-v-ubuntu
 
 $ sudo nano /etc/systemd/system/gunicorn.socket
 
@@ -31,6 +32,7 @@ WantedBy=multi-user.target
 
 
 
+
 Перезапук демона gunicorn после изменения gunicorn.service
 
 https://stackoverflow.com/questions/60253711/active-failed-result-service-start-limit-hit
@@ -39,3 +41,5 @@ $ sudo systemctl daemon-reload
 $ sudo systemctl restart gunicorn
 
 $ sudo systemctl status gunicorn.service
+
+$ sudo systemctl enable gunicorn

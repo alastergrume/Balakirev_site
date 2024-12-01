@@ -4,11 +4,32 @@ sudo cat /var/log/nginx/error.log
 файл конфигурациии
 sudo nano /etc/nginx/sites-available/Balakirev_site
 
+server {
+    listen 80;
+    server_name 130.193.52.218;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static {
+        root /home/ivan/Balakirev_site/sitewomen;
+    }
+
+    location = /static/admin {
+        root /home/ivan/Balakirev_site/sitewomen/static/admin;
+    }
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/run/gunicorn.sock;
+    }
+}
+
+
+
 статус
 sudo systemctl restart nginx
 
 статус
-sudo systemctl status gunicorn
+sudo systemctl status gunicornsudo
 журнал
 sudo journalctl -u gunicorn.socket
 

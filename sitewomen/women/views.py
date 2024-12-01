@@ -13,8 +13,8 @@ from .models import Women, Category, TagPost, UploadFiles, CommentModel
 # Коллекция для вывода меню
 menu = [
     {'title': 'О сайте', 'url_name': 'about'},
-    {'title': 'Добавить статью', 'url_name': 'add_page'},
-    {'title': 'Обратная связь', 'url_name': 'contact'},
+    {'title': 'Добавить задачу', 'url_name': 'add_page'},
+    # {'title': 'Обратная связь', 'url_name': 'contact'},
     {'title': 'Отображение дефицита', 'url_name': 'run_deficit'},
     {'title': 'Формирование дефицита', 'url_name': 'upload_deficit'},
     # {'title': 'Войти', 'url_name': 'login'},
@@ -97,14 +97,14 @@ class AddPage(View):
     """
     def get(self, request):
         form = AddPostForm()
-        return render(request, "women/addpage.html", {'title': "Добавление статьи", 'form': form})
+        return render(request, "women/addpage.html", {'title': "Добавление Задачи", 'form': form})
 
     def post(self, request):
         form = AddPostForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('home')
-        return render(request, "women/addpage.html", {'title': "Добавление статьи", 'form': form})
+        return render(request, "women/addpage.html", {'title': "Добавление Задачи", 'form': form})
 
 # Функция для добавления постов, закрыта пока есть класс выше
 
